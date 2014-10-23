@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 2.6)
 link_libraries(isamlib)
 
 # main iSAM executable (for processing files, timing, includes GUI, LCM interface)
-set (ISAM_SOURCES isam.cpp Loader.cpp)
+set (ISAM_SOURCES isam.cpp Loader.cpp wingetopt.c)
 if(USE_LCM)
   set (ISAM_SOURCES ${ISAM_SOURCES} Lcm.cpp)
   add_subdirectory(lcmtypes)
@@ -25,7 +25,6 @@ if(USE_GUI)
   include_directories(${GL_INCLUDE} ${SDL_INCLUDE_DIR})
   target_link_libraries(isam ${OPENGL_LIBRARY} ${SDL_LIBRARY})
 endif(USE_GUI)
-
 install(TARGETS isam
   RUNTIME DESTINATION bin
 )

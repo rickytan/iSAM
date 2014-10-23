@@ -8,7 +8,10 @@ add_library(isamlib ${SRCS})
 set_property(TARGET isamlib PROPERTY OUTPUT_NAME isam)
 
 # simple way of finding CHOLMOD
-find_package(Cholmod REQUIRED)
+# find_package(Cholmod REQUIRED)
+set(CHOLMOD_INCLUDES Cholmod/include)
+include(Cholmod/lib/Cholmod.cmake)
+set(CHOLMOD_LIBRARIES Cholmod/lib/libcxsparse Cholmod/lib/libcholmod Cholmod/lib/libcamd Cholmod/lib/libcolamd Cholmod/lib/libamd Cholmod/lib/libumfpack Cholmod/lib/suitesparseconfig)
 include_directories(${CHOLMOD_INCLUDES})
 target_link_libraries(isamlib ${CHOLMOD_LIBRARIES})
 

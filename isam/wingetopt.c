@@ -10,6 +10,7 @@ Code given out at the 1985 UNIFORUM conference in Dallas.
 
 #include "wingetopt.h"
 #include <stdio.h>
+#include <string>
 
 #define NULL	0
 #define EOF	(-1)
@@ -29,9 +30,7 @@ int	optopt;
 char	*optarg;
 
 int
-getopt(argc, argv, opts)
-int	argc;
-char	**argv, *opts;
+getopt(int argc,char **argv, char *opts)
 {
     static int sp = 1;
     register int c;
